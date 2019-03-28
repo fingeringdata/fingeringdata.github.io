@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Fingering Vizualizer</title>
+</head>
+
+
+<body>
+	<style>
+		body {
+			font-family: 'Arial',YuGothic,'Yu Gothic','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,'ＭＳ ゴシック',sans-serif;
+			font-size:10pt;
+		}
+
+		#labelForFilein1{
+			background-color: rgba(20,20,20,0.1);
+			border-radius: 5px;
+		}
+		#labelForFilein1:hover{
+			background-color: rgba(20,20,20,1);
+			color: white;
+		}
+		#labelForFilein1:active{
+			background-color: rgba(20,20,150,1);
+			color: white;
+		}
+		#labelForFilein2{
+			background-color: rgba(255,30,100,0.1);
+			border-radius: 5px;
+		}
+		#labelForFilein2:hover{
+			background-color: rgba(255,30,100,1);
+			color: white;
+		}
+		#labelForFilein2:active{
+			background-color: rgba(20,20,150,1);
+			color: white;
+		}
+		#labelForFilein3{
+			background-color: rgba(50,80,255,0.1);
+			border-radius: 5px;
+		}
+		#labelForFilein3:hover{
+			background-color: rgba(50,80,255,1);
+			color: white;
+		}
+		#labelForFilein3:active{
+			background-color: rgba(20,20,150,1);
+			color: white;
+		}
+
+		#dropzone {
+			position:absolute;
+			height: 20px;
+			width: 300px;
+			padding: 12px;
+			background-color: rgba(20,20,20,0.1);
+			border: solid 3px rgba(20,20,20,0.3);
+			color: rgba(20,20,20,0.7);
+		}
+		#dropzone.dropover {
+			background-color: rgba(20,20,20,1);
+			color: white;
+		}
+		#dropzone2 {
+			position:absolute;
+			height: 20px;
+			width: 300px;
+			padding: 12px;
+			background-color: rgba(255,30,100,0.1);
+			border: solid 3px rgba(255,30,100,0.3);
+			color: rgba(20,20,20,0.7);
+		}
+		#dropzone2.dropover {
+			background-color: rgba(255,30,100,1);
+			color: white;
+		}
+		#dropzone3 {
+			position:absolute;
+			height: 20px;
+			width: 300px;
+			padding: 12px;
+			background-color: rgba(50,80,255,0.1);
+			border: solid 3px rgba(50,80,255,0.3);
+			color: rgba(20,20,20,0.7);
+		}
+		#dropzone3.dropover {
+			background-color: rgba(50,80,255,1);
+			color: white;
+		}
+	</style>
+
+	<div id="fileinput1" style="position:relative; width:1000px; height:50px;">
+		<div id="dropzone" effectAllowed="move" style="font-size:12pt">Drop ground truth files here</div>
+		<form>
+			<input type="file" id="filein1" name="filein1" size="40" style="position:absolute; left:350px; top:2px; opacity:0;" multiple/>
+			<label id="labelForFilein1" for="filein1" style="position:absolute; left:350px; top:7px; width:80px; height:15px; padding:10px;">Open files</label>
+		</form>
+		<textarea id="filename1" style="position:absolute; left:470px; top:2px; width:300px; height:40px;"></textarea>
+	</div>
+	<div id="fileinput2" style="position:relative; width:1000px; height:50px;">
+		<div id="dropzone2" effectAllowed="move" style="font-size:12pt">Drop estimation files here</div>
+		<form>
+			<input type="file" id="filein2" name="filein2" size="40" style="position:absolute; left:350px; top:2px; opacity:0;" multiple/>
+			<label id="labelForFilein2" for="filein2" style="position:absolute; left:350px; top:7px; width:80px; height:15px; padding:10px;">Open files</label>
+		</form>
+		<textarea id="filename2" style="position:absolute; left:470px; top:2px; width:300px; height:40px;"></textarea>
+	</div>
+	<div id="fileinput3" style="position:relative; width:1000px; height:50px;">
+		<div id="dropzone3" effectAllowed="move" style="font-size:12pt">Drop estimation files here</div>
+		<form>
+			<input type="file" id="filein3" name="filein3" size="40" style="position:absolute; left:350px; top:2px; opacity:0;" multiple/>
+			<label id="labelForFilein3" for="filein3" style="position:absolute; left:350px; top:7px; width:80px; height:15px; padding:10px;">Open files</label>
+		</form>
+		<textarea id="filename3" style="position:absolute; left:470px; top:2px; width:300px; height:40px;"></textarea>
+	</div>
+
+	<form>
+		<div style="height:5px;"></div>
+		<input type="radio" name="modeRadio" value="Mode0"> Mode 0　
+		<input type="radio" name="modeRadio" value="Mode1" checked> Mode 1
+		<div style="height:5px;"></div>
+		Time scale  <input id="timeScale" type="number" min="0.01" max="50" step="0.1" style="width:50px; height:15px;" value="1.0">
+		<div style="height:5px;"></div>
+	</form>
+
+	<input id="drawButton" type="button" value="Draw" style="background-color:rgba(114,229,118,1); width:80px; height:40px; font-size:12pt;"/>
+	　
+	<input id="clearButton" type="button" value="Clear" style="background-color:rgba(255,200,30,1); width:50px; height:25px;"/>
+
+	<div id="display" style="position:relative; left:10px; top:10px; width:500px; height:400px; border:1px solid rgb(200,200,200);">
+		<svg id="mysvg" xmlns="http://www.w3.org/2000/svg" width="500" height="400" style="position:absolute;top:0px;left:0px">
+		</svg>
+	</div>
+	<div style="position:absolute;top:400px;height:400px;">　</div>
+
+	<script src="jquery.js"></script>
+	<script src="FingeringVizualizer.js"></script>
+
+</body>
+
+</html>
