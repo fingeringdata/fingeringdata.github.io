@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Fingering Visualizer</title>
+	<title>ピアノ運指ビジュアライザー</title>
 </head>
 
 
@@ -93,46 +93,46 @@
 	</style>
 
 	<h3>
-		Piano Fingering Visualizer (v. 1)　　　<a id="toInstruction" href="http://fingeringdata.github.io/InstructionForFingeringVisualizer.html" target="_blank" style="width:80px; height:15px; padding:10px; background-color: rgba(16,115,108,1); border-radius:5px; text-decoration:none; color:white; font-weight:300;">Instruction</a>　　<a href="ihttps://fingeringdata.github.io/FingeringVisualizer-ja.html" style="text-decoration:none; color:rgb(62,20,168); font-weight:400;"><font size="4">日本語へ</font></a>
+		ピアノ運指ビジュアライザー (v. 1)　　　<a id="toInstruction" href="http://fingeringdata.github.io/InstructionForFingeringVisualizer-ja.html" target="_blank" style="width:80px; height:15px; padding:10px; background-color: rgba(16,115,108,1); border-radius:5px; text-decoration:none; color:white; font-weight:300;">使い方</a>　　<a href="ihttps://fingeringdata.github.io/FingeringVisualizer.html" style="text-decoration:none; color:rgb(62,20,168); font-weight:300;"><font size="4">To English</font></a>
 	</h3>
 
 	<div id="fileinput1" style="position:relative; width:1000px; height:50px;">
-		<div id="dropzone" effectAllowed="move" style="font-size:12pt">Drop ground truth files here</div>
+		<div id="dropzone" effectAllowed="move" style="font-size:12pt">正解ファイルをここにドロップ</div>
 		<form>
 			<input type="file" id="filein1" name="filein1" size="40" style="position:absolute; left:350px; top:2px; opacity:0;" multiple/>
-			<label id="labelForFilein1" for="filein1" style="position:absolute; left:350px; top:7px; width:80px; height:15px; padding:10px;">Open files</label>
+			<label id="labelForFilein1" for="filein1" style="position:absolute; left:350px; top:7px; width:95px; height:15px; padding:10px;">ファイルを開く</label>
 		</form>
-		<textarea id="filename1" style="position:absolute; left:470px; top:2px; width:300px; height:40px;"></textarea>
+		<textarea id="filename1" style="position:absolute; left:485px; top:2px; width:300px; height:40px;"></textarea>
 	</div>
 	<div id="fileinput2" style="position:relative; width:1000px; height:50px;">
-		<div id="dropzone2" effectAllowed="move" style="font-size:12pt">Drop estimation files here</div>
+		<div id="dropzone2" effectAllowed="move" style="font-size:12pt">推定ファイルをここにドロップ</div>
 		<form>
 			<input type="file" id="filein2" name="filein2" size="40" style="position:absolute; left:350px; top:2px; opacity:0;" multiple/>
-			<label id="labelForFilein2" for="filein2" style="position:absolute; left:350px; top:7px; width:80px; height:15px; padding:10px;">Open files</label>
+			<label id="labelForFilein2" for="filein2" style="position:absolute; left:350px; top:7px; width:95px; height:15px; padding:10px;">ファイルを開く</label>
 		</form>
-		<textarea id="filename2" style="position:absolute; left:470px; top:2px; width:300px; height:40px;"></textarea>
+		<textarea id="filename2" style="position:absolute; left:485px; top:2px; width:300px; height:40px;"></textarea>
 	</div>
 	<div id="fileinput3" style="position:relative; width:1000px; height:50px;">
-		<div id="dropzone3" effectAllowed="move" style="font-size:12pt">Drop estimation files here</div>
+		<div id="dropzone3" effectAllowed="move" style="font-size:12pt">推定ファイルをここにドロップ</div>
 		<form>
 			<input type="file" id="filein3" name="filein3" size="40" style="position:absolute; left:350px; top:2px; opacity:0;" multiple/>
-			<label id="labelForFilein3" for="filein3" style="position:absolute; left:350px; top:7px; width:80px; height:15px; padding:10px;">Open files</label>
+			<label id="labelForFilein3" for="filein3" style="position:absolute; left:350px; top:7px; width:95px; height:15px; padding:10px;">ファイルを開く</label>
 		</form>
-		<textarea id="filename3" style="position:absolute; left:470px; top:2px; width:300px; height:40px;"></textarea>
+		<textarea id="filename3" style="position:absolute; left:485px; top:2px; width:300px; height:40px;"></textarea>
 	</div>
 
 	<form>
 		<div style="height:5px;"></div>
-		<input type="radio" name="modeRadio" value="Mode0"> Duration mode
-		<input type="radio" name="modeRadio" value="Mode1" checked> Transition mode
+		<input type="radio" name="modeRadio" value="Mode0"> 音長モード
+		<input type="radio" name="modeRadio" value="Mode1" checked> 遷移モード
 		<div style="height:5px;"></div>
-		Time scale  <input id="timeScale" type="number" min="0.01" max="50" step="0.1" style="width:50px; height:15px;" value="1.0">
+		時間スケール  <input id="timeScale" type="number" min="0.01" max="50" step="0.1" style="width:50px; height:15px;" value="1.0">
 		<div style="height:5px;"></div>
 	</form>
 
-	<input id="drawButton" type="button" value="Draw" style="background-color:rgba(114,229,118,1); width:80px; height:40px; font-size:12pt;"/>
+	<input id="drawButton" type="button" value="表示" style="background-color:rgba(114,229,118,1); width:80px; height:40px; font-size:12pt;"/>
 	　
-	<input id="clearButton" type="button" value="Clear" style="background-color:rgba(255,200,30,1); width:50px; height:25px;"/>
+	<input id="clearButton" type="button" value="クリア" style="background-color:rgba(255,200,30,1); width:50px; height:25px;"/>
 
 	<div id="display" style="position:relative; left:10px; top:10px; width:500px; height:400px; border:1px solid rgb(200,200,200);">
 		<svg id="mysvg" xmlns="http://www.w3.org/2000/svg" width="500" height="400" style="position:absolute;top:0px;left:0px">
@@ -142,7 +142,7 @@
 	<div style="position:relative;height:80px;"></div>
 
 	<div style="position:relative; left:100px; color:rgba(180,180,180,1);">
-		Maintained by <a href="http://eita-nakamura.github.io" style="text-decoration:none; color:rgba(100,100,100,1);">Eita Nakamura</a>　　　(Last updated: July 2019)　　<img src="https://www.f-counter.net/j/31/1553852238/">
+		Maintained by <a href="http://eita-nakamura.github.io" style="text-decoration:none; color:rgba(100,100,100,1);">Eita Nakamura</a>　　　(Last updated: July 2019)　　<img src="https://www.f-counter.net/j/31/1562389749/">
 	</div>
 	<div style="position:relative;height:20px;"></div>
 
